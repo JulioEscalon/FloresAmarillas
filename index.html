@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="icon" href="img/flowers.png" type="image/x-icon">
+    <title>For you</title>
+</head>
+
+<body>
+    <div class="greetings">
+        <span>B</span>
+        <span>a</span>
+        <span>b</span>
+        <span>y</span>
+		<span>!</span>
+        <span>&#128512;</span>
+    </div>
+    <div class="description">
+        <span>Tengo algo esperando por ti :3</span>
+    </div>
+    <div class="button">
+		<div id="count-down"></div>
+        <button id="to_flower" style="display:none;">
+            <a href="flower.html" style="color: #fff;">Abrir &#127873;</a>
+        </button>
+    </div>
+	<script src="js/simplycountdown.min.js"></script>
+	<script>
+		simplyCountdown("#count-down",{
+			year: 2024,
+			month: 9,
+			day: 21,
+			hours: 9,
+			minutes: 0,
+			seconds: 0,
+			words:{
+				days: { singular: 'Día', plural: 'Días' },
+                hours: { singular: 'Hora', plural: 'Horas' },
+                minutes: { singular: 'Minuto', plural: 'Minutos' },
+                seconds: { singular: 'Segundo', plural: 'Segundos' }
+			},
+			plural: true,
+			inline: false,
+			inlineClass: 'simply-countdown-inline',
+			enableUtc: true,
+			onUpdate: function(){
+				let d = document.querySelector('.simply-days-section');
+				let h = document.querySelector('.simply-hours-section');
+				let min = document.querySelector('.simply-minutes-section');
+				
+				if (d && d.querySelector('.simply-amount').innerText == '0') {
+					d.style.display = 'none';
+				}
+				if (h && h.querySelector('.simply-amount').innerText == '0') {
+					h.style.display = 'none';
+				}
+				if (min && min.querySelector('.simply-amount').innerText == '0') {
+					min.style.display = 'none';
+				}
+			},
+			onEnd: function(){
+				let countDown = document.getElementById("count-down");
+				let link = document.getElementById("to_flower");
+				countDown.style.display = 'none';
+				link.style.display = 'flex';
+				return;
+			},
+			refresh: 1000,
+			sectionClass: 'simply-section',
+			amountClass: 'simply-amount',
+			wordClass: 'simply-word',
+			zeroPad: false,
+			countUp: false	
+		});
+	</script>
+</body>
+	
+</html>
